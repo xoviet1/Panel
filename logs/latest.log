@@ -1,0 +1,238 @@
+[03:11:10] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[03:11:12] [ServerMain/INFO]: Loaded 1290 recipes
+[03:11:12] [ServerMain/INFO]: Loaded 1399 advancements
+[03:11:13] [Server thread/INFO]: Starting minecraft server version 1.21
+[03:11:13] [Server thread/INFO]: Loading properties
+[03:11:13] [Server thread/INFO]: This server is running Paper version 1.21-37-master@dd49fba (2024-06-24T02:08:49Z) (Implementing API version 1.21-R0.1-SNAPSHOT)
+[03:11:14] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[03:11:14] [Server thread/INFO]: Using 4 threads for Netty based IO
+[03:11:14] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
+    We recommend installing the spark profiler as a replacement: https://spark.lucko.me/
+    For more information please visit: https://github.com/PaperMC/Paper/issues/8948
+[03:11:14] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and population gen parallelism of 1 threads
+[03:11:15] [Server thread/INFO]: Default game type: SURVIVAL
+[03:11:15] [Server thread/INFO]: Generating keypair
+[03:11:15] [Server thread/INFO]: Starting Minecraft server on localhost:25565
+[03:11:15] [Server thread/INFO]: Using epoll channel type
+[03:11:15] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[03:11:15] [Server thread/INFO]: Paper: Using OpenSSL 1.1.x (Linux x86_64) cipher from Velocity.
+[03:11:16] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.0.1
+[03:11:16] [Server thread/INFO]: [ViaVersion] ViaVersion 5.0.1 is now loaded. Registering protocol transformers and injecting...
+[03:11:17] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
+[03:11:17] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
+[03:11:18] [Server thread/INFO]: [ViaBackwards] Loading translations...
+[03:11:18] [Server thread/INFO]: [ViaBackwards] Registering protocols...
+[03:11:19] [Server thread/INFO]: [ViaRewind] Registering protocols...
+[03:11:19] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.3-SNAPSHOT (b109-49bd564)
+[03:11:21] [Server thread/WARN]: [floodgate] en_ is not a supported Floodgate language.
+[03:11:21] [Server thread/INFO]: [floodgate] Took 1,555ms to boot Floodgate
+[03:11:21] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.0.1
+[03:11:21] [Server thread/INFO]: [PlaceholderAPI] Loading server plugin PlaceholderAPI v2.11.6
+[03:11:21] [Server thread/INFO]: [Geyser-Spigot] Loading server plugin Geyser-Spigot v2.4.0-SNAPSHOT
+[03:11:21] [Server thread/WARN]: [Geyser-Spigot] Missing locale: en_
+[03:11:22] [Server thread/INFO]: [Geyser-Spigot] Loading extensions...
+[03:11:22] [Server thread/INFO]: [Geyser-Spigot] Loaded 0 extension(s)
+[03:11:23] [Server thread/INFO]: [ViaRewind] Loading server plugin ViaRewind v4.0.0
+[03:11:23] [Server thread/INFO]: [BedrockPlayerManager] Loading server plugin BedrockPlayerManager v1.4
+[03:11:23] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.4-beta-01+0452ca2
+[03:11:24] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@491f1081]
+[03:11:24] [Server thread/INFO]: [BedrockParity] Loading server plugin BedrockParity v2.0.2
+[03:11:24] [Server thread/INFO]: [playit-gg] Loading server plugin playit-gg v0.1.4
+[03:11:24] [Server thread/INFO]: [GSit] Loading server plugin GSit v1.9.5
+[03:11:24] [Server thread/INFO]: [GeyserSkinManager] Loading server plugin GeyserSkinManager v1.7
+[03:11:24] [Server thread/INFO]: [ViaVersionStatus] Loading server plugin ViaVersionStatus v3.13
+[03:11:24] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.0.15
+[03:11:24] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[03:11:24] [Server thread/INFO]: [ViaRewind] Enabling ViaRewind v4.0.0
+[03:11:24] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.4-beta-01+0452ca2
+[03:11:24] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[03:11:24] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[03:11:25] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_21.PaperweightAdapter as the Bukkit adapter
+[03:11:26] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.0.15
+[03:11:27] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.
+[03:11:27] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: skinsrestorer [15.0.15]
+[03:11:27] [Server thread/INFO]: [SkinsRestorer] PlaceholderAPI expansion registered!
+[03:11:27] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
+[03:11:27] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[03:11:27] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[03:11:27] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[03:11:27] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[03:11:27] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[03:11:27] [Server thread/INFO]: Preparing level "world"
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.0.15
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: fcfa8b9
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[03:11:28] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[03:11:28] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[03:11:29] [Server thread/INFO]: Time elapsed: 1113 ms
+[03:11:29] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[03:11:30] [Server thread/INFO]: Time elapsed: 478 ms
+[03:11:30] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[03:11:30] [Server thread/INFO]: Time elapsed: 155 ms
+[03:11:30] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.0.1
+[03:11:30] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.21 (767)
+[03:11:30] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.3-SNAPSHOT (b109-49bd564)
+[03:11:31] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.0.1
+[03:11:31] [Server thread/INFO]: [PlaceholderAPI] Enabling PlaceholderAPI v2.11.6
+[03:11:31] [Server thread/INFO]: [PlaceholderAPI] Fetching available expansion information...
+[03:11:31] [Server thread/INFO]: [Geyser-Spigot] Enabling Geyser-Spigot v2.4.0-SNAPSHOT
+[03:11:31] [Server thread/INFO]: [BedrockPlayerManager] Enabling BedrockPlayerManager v1.4
+[03:11:31] [Server thread/INFO]: [BedrockParity] Enabling BedrockParity v2.0.2
+[03:11:31] [Server thread/INFO]: [BedrockParity] Sweeping Edge Book Fix in Anvil is enabled.
+[03:11:31] [Server thread/INFO]: [BedrockParity] Animating Heads for Bedrock Players is disabled because Geyser natively supports it Minecraft Java v1.20.2 and up.
+[03:11:31] [Server thread/INFO]: [playit-gg] Enabling playit-gg v0.1.4
+[03:11:32] [Thread-11/INFO]: [gg.playit.minecraft.PlayitKeysSetup] secret key found, checking
+[03:11:32] [Thread-11/INFO]: [gg.playit.minecraft.PlayitKeysSetup] check secret
+[03:11:32] [Server thread/INFO]: [GSit] Enabling GSit v1.9.5
+[03:11:32] [Folia Async Scheduler Thread #2/ERROR]: [SkinsRestorer] Error getting Eclipse UUID
+[03:11:32] [Server thread/INFO]: [GSit] The plugin was successfully enabled.
+[03:11:32] [Server thread/INFO]: [GSit] Link with PlaceholderAPI successful!
+[03:11:32] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: gsit [1.9.5]
+[03:11:32] [Server thread/INFO]: [GSit] Link with ViaVersion successful!
+[03:11:32] [Server thread/INFO]: [GeyserSkinManager] Enabling GeyserSkinManager v1.7
+[03:11:33] [Thread-11/INFO]: [gg.playit.minecraft.PlayitKeysSetup] found minecraft java tunnel: road-suspect.joinmc.link
+[03:11:33] [Thread-11/INFO]: [gg.playit.minecraft.PlayitManager] keys and tunnel setup
+[03:11:33] [Thread-11/WARN]: [gg.playit.control.ChannelSetup] Got IO error working with :control.playit.gg/2602:fbaf:848:0:0:0:0:1, error : java.net.SocketException: Network is unreachable
+[03:11:34] [Server thread/WARN]: [GeyserSkinManager] Floodgate found on the server! Disabling skin services and only running mod interactions.
+[03:11:34] [Server thread/INFO]: [ViaVersionStatus] Enabling ViaVersionStatus v3.13
+[03:11:34] [Server thread/INFO]: [ViaVersionStatus] Using ViaVersion to determine versions.
+[03:11:34] [Server thread/INFO]: [ViaVersionStatus] Metrics enabled if allowed by plugins/bStats/config.yml
+[03:11:34] [Server thread/INFO]: [PlaceholderAPI] Placeholder expansion registration initializing...
+[03:11:34] [Server thread/INFO]: 0 placeholder hook(s) registered!
+[03:11:34] [Server thread/INFO]: [Geyser-Spigot] ******************************************
+[03:11:34] [Server thread/INFO]: [Geyser-Spigot] 
+[03:11:34] [Server thread/INFO]: [Geyser-Spigot] Loading Geyser version 2.4.0-SNAPSHOT (git-master-6884a0f)
+[03:11:34] [Server thread/INFO]: [Geyser-Spigot] 
+[03:11:34] [Server thread/INFO]: [Geyser-Spigot] ******************************************
+[03:11:34] [Thread-11/INFO]: [gg.playit.control.ChannelSetup] request queued, waiting 1 second before resend
+[03:11:40] [epollEventLoopGroup-4-1/INFO]: [Geyser-Spigot] Started Geyser on 0.0.0.0:19132
+[03:11:40] [Server thread/INFO]: [Geyser-Spigot] Done (5.641s)! Run /geyser help for help!
+[03:11:40] [Server thread/INFO]: Running delayed init tasks
+[03:11:40] [Server thread/INFO]: Done (27.105s)! For help, type "help"
+[03:11:40] [Server thread/INFO]: Timings Reset
+[03:11:40] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor!
+[03:11:42] [Folia Async Scheduler Thread #2/ERROR]: [SkinsRestorer] Error getting Eclipse Profile
+[03:11:44] [Thread-11/INFO]: [gg.playit.minecraft.PlayitManager] got new client: NewClient{connectAddr=209.25.140.181:59275, peerAddr=135.125.233.211:55540, claimAddress=209.25.142.2:43783, claimToken=[44, 0, 60, -47, 25, -116, -75, -25, -117, -121, 125, -23, -45, -40, -12, 39, -22, -56, 74, -85, 7, 102, -118, 7, 112, 0, 0, 0, 0, 0, 5, -34, 64, 0, 0, 0, 0, 0, 50, 46, 41, 67, 74, -85, 7, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 88, 15, 77, -89, 125, -116, 94, -119, -76, 1, 29, 90, -21, 127, 80, 29], tunnelServerId=1, dataCenterId=5}
+[03:11:44] [Thread-11/INFO]: [gg.playit.minecraft.PlayitManager] starting tcp tunnel for client
+[03:11:44] [Thread-11/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] start connection to /209.25.142.2:43783 to claim client
+[03:11:44] [nioEventLoopGroup-2-1/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connected to tunnel server, sending claim token
+[03:11:44] [nioEventLoopGroup-2-1/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] claim token sent
+[03:11:44] [nioEventLoopGroup-2-1/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connection to tunnel server has been established
+[03:11:44] [nioEventLoopGroup-2-1/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] Reflect: ReflectionHelper{ServerConnection=class net.minecraft.server.network.ServerConnectionListener, LegacyPingHandler=class net.minecraft.server.network.LegacyQueryHandler, MinecraftServer=class net.minecraft.server.MinecraftServer, PacketSplitter=class net.minecraft.network.Varint21FrameDecoder, PacketDecoder=class net.minecraft.network.PacketDecoder, EnumProtocolDirection=class net.minecraft.network.protocol.PacketFlow, PacketPrepender=class net.minecraft.network.Varint21LengthFieldPrepender, PacketEncoder=class net.minecraft.network.PacketEncoder, NetworkManagerServer=class net.minecraft.network.RateKickingConnection, NetworkManager=class net.minecraft.network.Connection, HandshakeListener=class net.minecraft.server.network.ServerHandshakePacketListenerImpl, PacketListener=interface net.minecraft.network.PacketListener, CraftServer=class org.bukkit.craftbukkit.CraftServer}
+[03:11:44] [nioEventLoopGroup-2-1/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] legacyPingHandler is null
+[03:11:44] [nioEventLoopGroup-2-1/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connecting to minecraft server at localhost/127.0.0.1:25565
+[03:11:44] [nioEventLoopGroup-2-2/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connected to local minecraft server
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] ViaVersion supported protocols:
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.7.2-1.7.5(4)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.7.6-1.7.10(5)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.8.x(47)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.9(107)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.9.1(108)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.9.2(109)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.9.3-1.9.4(110)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.10.x(210)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.11(315)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.11.1-1.11.2(316)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.12(335)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.12.1(338)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.12.2(340)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.13(393)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.13.1(401)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.13.2(404)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.14(477)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.14.1(480)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.14.2(485)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.14.3(490)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.14.4(498)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.15(573)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.15.1(575)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.15.2(578)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.16(735)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.16.1(736)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.16.2(751)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.16.3(753)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.16.4-1.16.5(754)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.17(755)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.17.1(756)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.18-1.18.1(757)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.18.2(758)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.19(759)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.19.1-1.19.2(760)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.19.3(761)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.19.4(762)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.20-1.20.1(763)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.20.2(764)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.20.3-1.20.4(765)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.20.5-1.20.6(766)
+[03:11:45] [Server thread/INFO]: [ViaVersionStatus] 1.21(767)
+[03:12:56] [epollEventLoopGroup-5-1/INFO]: [Geyser-Spigot] Player connected with username EarnedRook50735
+[03:12:56] [localSession-8-2/INFO]: [Geyser-Spigot] EarnedRook50735 (logged in as: EarnedRook50735) has connected to the Java server
+[03:12:56] [Server thread/INFO]: [floodgate] Floodgate player logged in as .EarnedRook50735 joined (UUID: 00000000-0000-0000-0009-01f00e7cae46)
+[03:12:57] [Server thread/INFO]: .EarnedRook50735 joined the game
+[03:12:57] [Server thread/INFO]: .EarnedRook50735[/127.137.235.201:0] logged in with entity id 73 at ([world]852.5196, 71.24813599859094, -1126.7684)
+[03:15:35] [Thread-11/INFO]: [gg.playit.control.ChannelSetup] send keep alive
+[03:16:20] [Thread-11/INFO]: [gg.playit.minecraft.PlayitManager] got new client: NewClient{connectAddr=209.25.140.181:59275, peerAddr=51.38.230.103:37396, claimAddress=209.25.142.2:43783, claimToken=[44, 0, 60, -47, 25, -116, -75, -25, -117, 51, 38, -26, 103, -110, 20, 107, 2, 25, 51, -85, 7, 102, -118, 8, -124, 0, 0, 0, 0, 0, 5, -34, 64, 0, 0, 0, 0, 0, 50, 46, 41, 110, 51, -85, 7, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, -14, -72, -70, 54, 36, -32, 58, -103, -1, 19, -20, -26, -105, -84, 26, 67], tunnelServerId=1, dataCenterId=5}
+[03:16:20] [Thread-11/INFO]: [gg.playit.minecraft.PlayitManager] starting tcp tunnel for client
+[03:16:20] [Thread-11/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] start connection to /209.25.142.2:43783 to claim client
+[03:16:20] [nioEventLoopGroup-2-3/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connected to tunnel server, sending claim token
+[03:16:20] [nioEventLoopGroup-2-3/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] claim token sent
+[03:16:20] [nioEventLoopGroup-2-3/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connection to tunnel server has been established
+[03:16:20] [nioEventLoopGroup-2-3/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] Reflect: ReflectionHelper{ServerConnection=class net.minecraft.server.network.ServerConnectionListener, LegacyPingHandler=class net.minecraft.server.network.LegacyQueryHandler, MinecraftServer=class net.minecraft.server.MinecraftServer, PacketSplitter=class net.minecraft.network.Varint21FrameDecoder, PacketDecoder=class net.minecraft.network.PacketDecoder, EnumProtocolDirection=class net.minecraft.network.protocol.PacketFlow, PacketPrepender=class net.minecraft.network.Varint21LengthFieldPrepender, PacketEncoder=class net.minecraft.network.PacketEncoder, NetworkManagerServer=class net.minecraft.network.RateKickingConnection, NetworkManager=class net.minecraft.network.Connection, HandshakeListener=class net.minecraft.server.network.ServerHandshakePacketListenerImpl, PacketListener=interface net.minecraft.network.PacketListener, CraftServer=class org.bukkit.craftbukkit.CraftServer}
+[03:16:20] [nioEventLoopGroup-2-3/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] legacyPingHandler is null
+[03:16:20] [nioEventLoopGroup-2-3/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connecting to minecraft server at localhost/127.0.0.1:25565
+[03:16:20] [nioEventLoopGroup-2-4/INFO]: [gg.playit.minecraft.PlayitTcpTunnel] connected to local minecraft server
+[03:19:35] [Thread-11/INFO]: [gg.playit.control.ChannelSetup] send keep alive
+[03:20:35] [localSession-8-2/INFO]: [Geyser-Spigot] EarnedRook50735 has disconnected from the Java server because of Bedrock client disconnected
+[03:20:35] [Geyser Spigot connection thread-7-3/INFO]: [floodgate] Floodgate player logged in as .EarnedRook50735 disconnected
+[03:20:35] [Server thread/INFO]: .EarnedRook50735 lost connection: Disconnected
+[03:20:35] [Server thread/INFO]: .EarnedRook50735 left the game
+[03:20:45] [Server thread/INFO]: Stopping the server
+[03:20:45] [Server thread/INFO]: Stopping server
+[03:20:45] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.0.15
+[03:20:45] [Server thread/INFO]: [ViaVersionStatus] Disabling ViaVersionStatus v3.13
+[03:20:45] [Server thread/INFO]: [GeyserSkinManager] Disabling GeyserSkinManager v1.7
+[03:20:45] [Server thread/INFO]: [GSit] Disabling GSit v1.9.5
+[03:20:45] [Server thread/INFO]: [GSit] The plugin was successfully disabled.
+[03:20:45] [Server thread/INFO]: [playit-gg] Disabling playit-gg v0.1.4
+[03:20:45] [Server thread/INFO]: [BedrockParity] Disabling BedrockParity v2.0.2
+[03:20:45] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.4-beta-01+0452ca2
+[03:20:45] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
+[03:20:45] [Server thread/INFO]: [BedrockPlayerManager] Disabling BedrockPlayerManager v1.4
+[03:20:45] [Server thread/INFO]: [ViaRewind] Disabling ViaRewind v4.0.0
+[03:20:45] [Server thread/INFO]: [Geyser-Spigot] Disabling Geyser-Spigot v2.4.0-SNAPSHOT
+[03:20:45] [Server thread/INFO]: [Geyser-Spigot] Shutting down Geyser.
+[03:20:46] [Server thread/INFO]: [Geyser-Spigot] Geyser shutdown successfully.
+[03:20:46] [Server thread/INFO]: [PlaceholderAPI] Disabling PlaceholderAPI v2.11.6
+[03:20:46] [Server thread/INFO]: [ViaBackwards] Disabling ViaBackwards v5.0.1
+[03:20:46] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.3-SNAPSHOT (b109-49bd564)
+[03:20:46] [Server thread/INFO]: [ViaVersion] Disabling ViaVersion v5.0.1
+[03:20:46] [Server thread/INFO]: [ViaVersion] ViaVersion is disabling, if this is a reload and you experience issues consider rebooting.
+[03:20:46] [Server thread/INFO]: Saving players
+[03:20:46] [Server thread/INFO]: Saving worlds
+[03:20:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[03:20:46] [WebSocketConnectReadThread-112/INFO]: [Geyser-Spigot] The skin uploader has been closed
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Saved 62 block chunks, 170 entity chunks, 0 poi chunks in world 'world' in 0.23s
+[03:20:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 20 entity chunks, 0 poi chunks in world 'world_nether' in 0.05s
+[03:20:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[03:20:46] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 1 entity chunks, 0 poi chunks in world 'world_the_end' in 0.03s
+[03:20:46] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[03:20:46] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[03:20:46] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[03:20:46] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved

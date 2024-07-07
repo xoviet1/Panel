@@ -1,0 +1,56 @@
+groups:
+  default:
+    options:
+      default: 'true'
+      prefix: '&7'
+      suffix: '&7Default'
+    permissions:
+    - essentials.msg
+    inheritance:
+    - default
+  MOD:
+    options:
+      default: 'false'
+      prefix: '&5&nMOD&r &7'
+      suffix: '&5&nMOD&r &7'
+    permissions:
+    - essentials.ban
+    - essentials.tempban
+    - essentials.mute
+    - essentials.tempute
+    - essentials.kick
+    - essentials.banip
+    - essentials.vanish
+    inheritance:
+    - default
+  ADMIN:
+    options:
+      default: 'false'
+      prefix: '&c&nADMIN&r &7'
+      suffix: '&c&nADMIN&r &7'
+    permissions:
+    - essentials.ban
+    - essentials.tempban
+    - essentials.mute
+    - essentials.tempute
+    - essentials.kick
+    - essentials.banip
+    - essentials.vanish
+    inheritance:
+    - default
+  Owner:
+    options:
+      default: 'false'
+      prefix: '&4&nOWNER&r &7'
+      suffix: '&4&nOWNER&r &7'
+    permissions:
+    - '*'
+    inheritance:
+    - default
+schema-version: 1
+users:
+  a6171976-d57a-4556-be56-6987215863fe:
+    group:
+    - ADMIN
+    options:
+      name: UzumakiYT

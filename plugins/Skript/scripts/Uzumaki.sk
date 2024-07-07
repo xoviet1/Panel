@@ -1,0 +1,183 @@
+options:
+
+	items: "&8➥ &eSelect Game"
+
+
+on right click on entity:
+	player's world is "world":
+		name of clicked entity is "&eKnockBackFFA":
+			kffa_join(player)
+		name of clicked entity is "&eThe PIT":
+			pit_join(player)
+		name of clicked entity is "&eBattle Royale":
+			make player execute command "bg autojoin"
+		name of clicked entity is "&eTnTTag":
+			make player execute command "tnttag autojoin"
+		name of clicked entity is "&eThe Bridge":
+			make player execute command "bridge autojoin"			
+
+on drop:
+	name of event-item is {@items}:
+		cancel event
+	
+on inventory click:
+	name of event-item is {@items}:
+		cancel event	
+
+at 18:00:
+	set time to 7:00
+	
+on chat:
+#Chat format
+	if {pit.%uuid of player%.state} is set:
+		set chat format to "&7[&e%{pit.%uuid of player%.level}%&7] %player's prefix%%player% &8➥ &7%message%"
+	else:
+		set chat format to "%player's prefix%%player% &8➥ &7%message%"
+	if {kffa::cache::%uuid of player%::state} is set:
+		set chat recipients to all players where [{kffa::cache::%uuid of input%::state} is set]
+	if {pit.%uuid of player%.state} is set:
+		set chat recipients to all players where [{pit.%uuid of input%.state} is set]		
+	if {bg::player::%uuid of player%::state} is set:
+		set chat recipients to {bg::arena::%{bg::player::%uuid of player%::arena}%::cache::ninjas::*}	
+	if {tnt.player::%uuid of player%.state} is set:	
+		set chat recipients to {tnt.arena.%{tnt.player::%uuid of player%.arena}%.ninjas::*} and {tnt.arena.%{tnt.player::%uuid of player%.arena}%.bad-ninjas::*}	
+	if {bridge.player::%uuid of player%.state} is set:
+		if {bridge.arena.%{bridge.player::%uuid of player%.arena}%.status} is "INGAME":
+			if {bridge.player::%uuid of player%.team} is "red":
+				set chat format to "&cRED %player's prefix%%player% &8➥ &7%message%"
+			if {bridge.player::%uuid of player%.team} is "blue":
+				set chat format to "&1BLUE %player's prefix%%player% &8➥ &7%message%"	
+		set chat recipients to {bridge.arena.%{bridge.player::%uuid of player%.arena}%.ninjas::*}	
+
+
+function createBoard(p: player, t: text, size: integer = 15):
+	add "&a", "&b", "&c", "&d", "&e", "&1", "&2", "&3", "&4", "&5", "&6", "&7", "&8", "&9" and "&f" to {_d::*}
+	if stylish scoreboard "%{_t}%-%{_p}%" does not exist:
+		create new stylish scoreboard named "%{_t}%-%{_p}%"
+		loop {_size} times:
+			create a new id based score "%{_p}%Slot%loop-number%" with text "%{_d::%loop-number%}%" slot loop-number for stylish scoreboard "%{_t}%-%{_p}%"
+		wait a tick
+		set stylish scoreboard of {_p} to "%{_t}%-%{_p}%"
+		
+function deleteBoard(p: player):
+	loop "world" and "KnockBackFFA":
+		if stylish scoreboard "%loop-value%-%{_p}%" exists:
+			loop 15 times:
+				delete the id based score "%{_p}%Slot%loop-number-2%" in stylish scoreboard "%loop-value-1%-%{_p}%"
+			delete stylish scoreboard "%loop-value-1%-%{_p}%"
+			
+function setSlot(p: player, board: text, slot: integer, t: text):
+    add "&a", "&b", "&c", "&d", "&e", "&1", "&2", "&3", "&4", "&5", "&6", "&7", "&8", "&9" and "&f" to {_d::*}
+    if {_slot} is between 1 and 15:
+        set text of id "%{_p}%Slot%{_slot}%" to "%{_d::%{_slot}%}%%{_t}%" 
+
+function setScoreboard(p: player, board: text):
+	set {_uuid} to uuid of {_p} 
+	deleteBoard({_p})
+	wait a tick		
+	if {_board} is "world":	
+		createBoard({_p}, {_board}, 13)
+		set title of stylish scoreboard "%{_board}%-%{_p}%" to "&eMy Cool Server"	
+		while {_p}'s world is "world":
+			if stylish scoreboard "%{_board}%-%{_p}%" exists:
+				setSlot({_p}, {_board}, 13, "")			
+				setSlot({_p}, {_board}, 12, "&e&l» &f&lPROFILE")			
+				setSlot({_p}, {_board}, 11, "")			
+				setSlot({_p}, {_board}, 10, "&8&l➡ &7Nick: &a%{_p}%")				
+				setSlot({_p}, {_board}, 9, "&8&l➡ &7Rank %colored {_p}'s suffix%")			
+				setSlot({_p}, {_board}, 8, "")			
+				setSlot({_p}, {_board}, 7, "&e&l» &f&lSERVER")		
+				setSlot({_p}, {_board}, 6, "")	
+				setSlot({_p}, {_board}, 5, "&8&l➡ &7HUB &a%number of players in world ""world""%")		
+				setSlot({_p}, {_board}, 4, "")	
+				setSlot({_p}, {_board}, 3, "&8&l➡ &7GLOBAL &a%number of all players%")		
+				setSlot({_p}, {_board}, 2, "")	
+				setSlot({_p}, {_board}, 1, "&eMC.SERVER-NAME.NET")					
+			else:
+				stop
+			wait a second	
+	if {_board} is "KnockBackFFA":
+		createBoard({_p}, {_board}, 15)
+		set title of stylish scoreboard "%{_board}%-%{_p}%" to "&aKNOCKBACK &eFFA"
+		while {kffa::cache::%{_uuid}%::state} is set:
+			if stylish scoreboard "%{_board}%-%{_p}%" exists:	
+				setSlot({_p}, {_board}, 15, "&7%now%")
+				setSlot({_p}, {_board}, 14, "")					
+				setSlot({_p}, {_board}, 13, "&b➦ &7USER:")	
+				setSlot({_p}, {_board}, 12, "&3➥ &a%{_p}'s displayname%")	
+				setSlot({_p}, {_board}, 11, "&c")					
+				setSlot({_p}, {_board}, 10, "&b➦ &7MAP:")		
+				setSlot({_p}, {_board}, 9, "&3➥ &a%{kffa.current.map}%")	
+				setSlot({_p}, {_board}, 8, "")		
+				setSlot({_p}, {_board}, 7, "&b➦ &7KILLS:")	
+				setSlot({_p}, {_board}, 6, "&3➥ &a%{kffa.stats::%{_uuid}%.kills}%")	
+				setSlot({_p}, {_board}, 5, "")					
+				setSlot({_p}, {_board}, 4, "&b➦ &7DEATHS:")
+				setSlot({_p}, {_board}, 3, "&3➥ &a%{kffa.stats::%{_uuid}%.deaths}%")						
+				setSlot({_p}, {_board}, 2, "&c")						
+				setSlot({_p}, {_board}, 1, "&eMC.SERVER-NAME.NET")				
+			else:
+				stop				
+			wait a second							  
+
+function clear_player(p: player):
+	clear {_p}'s inventory
+	clear {_p}'s level
+	heal {_p}
+	set {_p}'s hunger to 20
+	extinguish {_p}
+
+function lobby(p: player):
+	set {_uuid} to uuid of {_p}
+	if {kffa::cache::%{_uuid}%::state} is set:
+		kffa_leave({_p})
+	if {bg::player::%{_uuid}%::state} is set:
+		bg_leave({_p})	
+	if {tnt.player::%{_uuid}%.state} is set:
+		tnt_leave({_p})
+	if {pit.%{_uuid}%.state} is set:	
+		pit_leave({_p})
+	if {bridge.player::%{_uuid}%.state} is set:
+		make {_p} execute command "bridge leave"		
+	make console execute command "mvtp %{_p}% world"
+	clear_player({_p})
+	setScoreboard({_p}, "world")
+	make console execute command "nte player %{_p}% prefix %{_p}'s prefix%"	
+	set slot 4 of {_p} to compass named "&8➥ &eSelect Game"	
+
+command lobby:
+	aliases: hub
+	trigger:
+		lobby(player)	
+
+on right click:
+	name of event-item is "&8➥ &eSelect Game":
+		open chest inventory with 5 rows named "&8&l» &7Select Game" to player
+		wait a tick
+		loop 46 times:
+			make a gui slot loop-number-2 of player with gray glass pane named "&e" to do nothing																	
+		make a gui slot 11 of player with stone axe named "&8» &7Battle Royale" with lore "||&8➥ &7Playing: &e%number of players in world ""pubg""%||||&8▪ &aRight Click To View Arenas.||&8▪ &aLeft Click To Quick Play." to run:
+			if "%click type%" is "left mouse button":
+				make player execute command "bg autojoin"
+			if "%click type%" is "right mouse button":
+				make player execute command "bg list"				
+		make a gui slot 15 of player with stick named "&8» &7KnockBackFFA" with lore "||&8▪ &7Playing: &e%number of players in world ""kffa""%" to run function kffa_join(player)
+		make a gui slot 33 of player with tnt named "&8» &7TnTTag" with lore "||&8➥ &7Playing: &e%number of players in world ""tnttag""%||||&8▪ &aRight Click To View Arenas.||&8▪ &aLeft Click To Quick Play." to run:
+			if "%click type%" is "left mouse button":
+				make player execute command "tnttag autojoin"
+			if "%click type%" is "right mouse button":
+				make player execute command "tnttag list"
+		make a gui slot 29 of player with iron sword named "&8» &7ThePIT" with lore "||&8▪ &7Playing: &e%number of players in world ""pit""%" to run function pit_join(player)			
+		make a gui slot 22 of player with blue clay named "&8» &7The Bridge" with lore "||&8➥ &7Playing: &e%number of players in world ""bridge-maps""%||||&8▪ &aRight Click To View Arenas.||&8▪ &aLeft Click To Quick Play." to run:
+			if "%click type%" is "left mouse button":
+				make player execute command "bridge autojoin"
+			if "%click type%" is "right mouse button":
+				make player execute command "bridge list"							
+	
+on join:
+	set join message to ""
+	lobby(player)
+
+on quit:
+	set quit message to ""
+	

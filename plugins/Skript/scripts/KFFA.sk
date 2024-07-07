@@ -1,0 +1,287 @@
+options:
+	
+	bungeecord: false
+	
+	#counted in minutes.
+	change-map-time: 15
+	
+	#counted in seconds.
+	speed-cooldown: 15
+	
+	#counted in seconds.
+	jump-cooldown: 15
+
+	#counted in seconds.
+	bow-cooldown: 20	
+	
+	chat-format: &7%player's displayname% &8» &7%message%
+	
+	kill-message: &7%{_p}'s displayname% &3was killed by &7%{_killer}'s displayname%
+	
+	death-message: &7%{_p}'s displayname% &3died.
+	
+	map-change-message: &a» &7Map changed to &e%{_map}% 
+
+
+function kffa_join(p: player):
+	set {_uuid} to uuid of {_p}
+	set {kffa::cache::%{_uuid}%::state} to "INGAME"
+	setScoreboard({_p}, "KnockBackFFA")
+	loop "kills" and "deaths":
+		if {kffa.stats::%{_uuid}%.%loop-value%} is not set:
+			set {kffa.stats::%{_uuid}%.%loop-value%} to 0
+	teleport {_p} to {kffa.%{kffa.current.map}%.spawn}	
+	kffa_equip({_p})
+	wait a tick
+	teleport {_p} to {kffa.%{kffa.current.map}%.spawn}
+	
+function kffa_leave(p: player):
+	set {_uuid} to uuid of {_p}
+	delete {kffa::cache::%{_uuid}%::state}
+	teleport {_p} to {kffa.leave}	
+	kffa_clear({_p})
+			
+function kffa_clear(p: player):	
+	clear {_p}'s inventory
+	clear {_p}'s level
+	heal {_p}
+	set {_p}'s hunger to 20
+	extinguish {_p}
+	delete metadata value "LAST-HIT" of {_p}
+	delete metadata value "SPEED-COOLDOWN" of {_p}
+	delete metadata value "JUMP-COOLDOWN" of {_p}
+	delete metadata value "BOW-COOLDOWN" of {_p}	
+	
+function kffa_equip(p: player):	
+	kffa_clear({_p})
+	set slot 0 of {_p} to unbreakable stick of sharpness 1 and knockback 2 named "&3Puncher"
+	set slot 1 of {_p} to unbreakable bow named "&7︻デ═一" 	
+	set slot 2 of {_p} to 64 sandstone
+	set slot 4 of {_p} to gold pressure plate named "&eSuper Jump"
+	set slot 7 of {_p} to feather named "&3Speed"		
+	set slot 8 of {_p} to ender pearl	
+	set slot 9 of {_p} to arrow	
+
+on right click with feather or gold pressure plate:
+	if {kffa::cache::%uuid of player%::state} is "INGAME":
+		if name of event-item is "&3Speed":
+			set metadata value "SPEED-COOLDOWN" of player to "SET"
+			apply speed 3 to player for 5 seconds
+			set {_int} to {@speed-cooldown}
+			loop {_int} times:
+				metadata value "SPEED-COOLDOWN" of player is set
+				set slot 7 of player to {_int} of feather of sharpness 1 named "&c%{_int}% &3Speed"
+				remove 1 from {_int}
+				if {_int} is 0:
+					set slot 7 of player to feather named "&3Speed"
+					stop
+				wait a second
+		if name of event-item is "&eSuper Jump":
+			set metadata value "JUMP-COOLDOWN" of player to "SET"
+			set {_int} to {@jump-cooldown}
+			loop {_int} times:
+				metadata value "JUMP-COOLDOWN" of player is set
+				set slot 4 of player to {_int} of clock of sharpness 1 named "&c%{_int}% &eSuper Jump"
+				remove 1 from {_int}
+				if {_int} is 0:
+					set slot 4 of player to gold pressure plate named "&eSuper Jump"
+					stop
+				wait a second		
+					
+on join:
+	{@bungeecord} is true
+	kffa_join(player)
+	
+on inventory click:
+	if {kffa::cache::%uuid of player%::state} is "INGAME":
+		if name of event-item contains "&3Speed" or "&eSuper Jump" or "&7︻デ═一":
+			cancel event
+			
+on drop:
+	if {kffa::cache::%uuid of player%::state} is "INGAME":		
+		cancel event
+
+function kffa_death(p: player):
+	set {_v-uuid} to uuid of {_p}	
+	if metadata value "LAST-HIT" of {_p} is set:
+		set {_killer} to metadata value "LAST-HIT" of {_p}
+		set {_uuid} to uuid of {_killer}
+		add 1 to {kffa.stats::%{_uuid}%.kills}
+		give 1 ender pearl to {_killer}
+		play sound "ORB_PICKUP" to {_killer} with volume 50 and pitch 60
+		loop all players:
+			{kffa::cache::%uuid of loop-player%::state} is "INGAME"
+			send "{@kill-message}" to loop-player
+	else:
+		loop all players:
+			{kffa::cache::%uuid of loop-player%::state} is "INGAME"
+			send "{@death-message}" to loop-player			
+	add 1 to {kffa.stats::%{_v-uuid}%.deaths}	
+	teleport {_p} to {kffa.%{kffa.current.map}%.spawn}
+	kffa_equip({_p})
+			
+on damage:
+	if {kffa::cache::%uuid of victim%::state} is "INGAME":
+		set metadata value "LAST-HIT" of victim to attacker
+		if damage cause is fall:
+			cancel event
+		if damage cause is void:
+			cancel event
+			kffa_death(victim)			
+		if damage is greater than or equal to health of victim:
+			cancel event
+			kffa_death(victim)
+		
+function kffa_choose_map(map: text = random):
+	{_map} is "random":
+		set {_map} to a random element out of {kffa.maps::*}
+	set {kffa.current.map} to {_map}	
+	loop all players:
+		{kffa::cache::%uuid of loop-player%::state} is set
+		teleport loop-value to {kffa.%{kffa.current.map}%.spawn}
+		kffa_equip(loop-player)
+	size of {kffa.maps::*} > 0
+	set {_time} to {@change-map-time}*60
+	loop all players:
+		{kffa::cache::%uuid of loop-player%::state} is "INGAME"
+		send "{@map-change-message}" to loop-player		
+	loop {_time} times:
+		remove 1 from {_time}
+		wait a second
+		{_time} = 1
+		kffa_choose_map()
+		
+command kffa [<text>] [<text>]:
+	aliases: knockbackffa
+	trigger:
+		if arg-1 is not set:
+			make player execute command "kffa help"
+		if arg-1 is "join":	
+			if size of {kffa.maps::*} > 0:
+				if {kffa::cache::%uuid of player%::state} is not set:
+					kffa_join(player)
+				else:
+					send "&cAlready ingame."
+			else:
+				send "&cNo maps added!"
+		if arg-1 is "leave":	
+			if {kffa::cache::%uuid of player%::state} is set:
+				if {@bungeecord} is true:
+					if player has permission "kffa.admin":
+						kffa_leave(player)	
+				else:
+					kffa_leave(player)	
+			else:
+				send "&cNot ingame."
+		if arg-1 is "addmap" or "setleave" or "removemap" or "resetstats":
+			if player has permission "kffa.admin":
+				if arg-1 is "addmap":	
+					if arg-2 is set:
+						add arg-2 to {kffa.maps::*}
+						set {kffa.%arg-2%.spawn} to player's location
+						send "&a» &eMap added!"
+					else:
+						send "&cSpecify name!"
+				if arg-1 is "removemap":	
+					if arg-2 is set:
+						remove arg-2 from {kffa.maps::*}
+						delete {kffa.%arg-2%.spawn}
+						send "&a» &cMap removed!"
+					else:
+						send "&cSpecify name!"						
+				if arg-1 is "setleave":		
+					set {kffa.leave} to player's location
+					send "&a» &eLeave set!"	
+				if arg-1 is "setcurrentmap":	
+					if arg-2 is set:
+						kffa_choose_map(arg-2)
+						send "&a» &eDone!"
+					else:
+						send "&cSpecify name!"	
+				if arg-1 is "resetstats":	
+					if arg-2 is set:
+						set {_p} to arg-2 parsed as player
+						set {_uuid} to uuid of {_p}
+						loop "kills" and "deaths":
+							set {kffa.stats::%{_uuid}%.%loop-value%} to 0
+					else:
+						send "&cSpecify name!"							
+		if arg-1 is "help":	
+			send "&8&m---------------------"
+			send "&7» &a/kffa join"
+			send "&7» &a/kffa leave"
+			if player has permission "kffa.admin":
+				send "&7» &c/kffa setcurrentmap"
+				send "&7» &c/kffa addmap"
+				send "&7» &c/kffa removemap"
+				send "&7» &c/kffa setleave"
+				send "&7» &c/kffa resetstats <player>"				
+			send "&8&m---------------------"				
+					
+on pressure plate:
+	if {kffa::cache::%uuid of player%::state} is "INGAME":
+		cancel event	
+		play sound "PISTON_RETRACT" to player with volume 100 and pitch 100
+		push the player upwards at speed 1.0
+		push the player forwards at speed 0.8
+
+		
+on shoot:
+	if {kffa::cache::%uuid of shooter%::state} is "INGAME":
+		projectile is arrow
+		set metadata value "KFFA" of projectile to "SET"
+		set metadata value "BOW-COOLDOWN" of shooter to "SET"
+		set {_int} to {@bow-cooldown}
+		loop {_int} times:
+			metadata value "BOW-COOLDOWN" of shooter is set
+			set slot 1 of shooter to {_int} of bow of sharpness 1 named "&c%{_int}% &7︻デ═一"
+			remove 1 from {_int}
+			if {_int} is 0:
+				set slot 1 of shooter to unbreakable bow named "&7︻デ═一"
+				stop
+			wait a second		
+						
+
+		
+on projectile hit:
+	metadata value "KFFA" of projectile is set
+	delete projectile
+	
+on hunger bar change:
+	if {kffa::cache::%uuid of player%::state} is "INGAME":
+		cancel event
+		set player's hunger to 20
+		
+on place:
+	if {kffa::cache::%uuid of player%::state} is "INGAME":
+		if event-block is sandstone or gold pressure plate:	
+			set {kffa::blocks::%location of event-block%} to location of event-block
+		if event-block is sandstone:
+			wait 10 seconds
+			set block at event-block to white clay
+			wait a second
+			set block at event-block to orange clay
+			wait a second
+			set block at event-block to red clay
+			wait a second
+			set block at event-block to air	
+			delete {kffa::blocks::%location of event-block%}			
+		if event-block is gold pressure plate:
+			wait 5 second
+			set block at event-block to air
+			delete {kffa::blocks::%location of event-block%}
+		else:
+			cancel event
+
+on break:
+	if {kffa::cache::%uuid of player%::state} is "INGAME":
+		cancel event
+						
+on load:
+	delete {kffa::cache::player::*}
+	loop {kffa::blocks::*}:
+		set block at loop-value to air
+		wait a tick
+	delete {kffa::blocks::*}	
+	kffa_choose_map()	
+			

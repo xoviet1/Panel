@@ -1,0 +1,48 @@
+CHAT:
+  ENABLE: 'true'
+  CHAT-FORMAT: '&7[&e{level}&7] {player} &8&l- &7{message}'
+BUNGEECORD: 'false'
+NAME-FORMAT: '&7[&e{level}&7] &7'
+NPCS:
+  SHOP-ID: 0
+  UPGRADE-ID: 1
+  STATS-ID: 2
+USE-PRESSURE-PLATE: 'true'
+SOUNDS:
+  LEVEL-UP-SOUND: LEVEL_UP
+  KILL-SOUND: ORB_PICKUP
+ENABLED-WORLDS:
+- world
+- thepit
+REWARDS:
+  KILL-XP: 15
+  KILL-GOLD: 10
+  ASSIST-XP: 10
+  ASSIST-GOLD: 5
+MAX-LEVEL: 120
+ENDER_CHEST-NEED-LEVEL: 50
+STATS-NEED-LEVEL: 50
+PERK-SLOT-2-NEED-LEVEL: 35
+MESSAGES:
+  PREFIX: '&e&lTHE PIT &8&l- &7'
+  KILL: '&aKILL! &7on [&e{level}&7] {victim} &b&l+{xp}XP &6&l+{gold}'
+  ASSIST: '&aASSIST! &7on [&e{level}&7] {player} &b&l+{xp}XP &6&l+{gold}'
+  KILL-STREAK: '&c&lSTREAK! &7of &c[streak] &7by {level} {player}'
+  LEVEL-UP: '&3&lLEVEL UP! &7[&e{level}&7]'
+  ENDER_CHEST-NEED-LEVEL: '&cYou need level {level} to use stats!'
+  STATS-NEED-LEVEL: '&cYou need level {level} to use stats!'
+  ITEM-PURCHASE: '&aPURCHASE! &6[item]'
+  PERK-PURCHASE: '&aPURCHASED PERK!'
+  PERK-SELECTED: '&c&lSELECTED PERK'
+  PERK-IN-USE: '&c&lYou already use this perk.'
+  NO-GOLD: '&c&lNOT ENOUGHT GOLD!'
+  IN-GAME: '&cYou are already in game.'
+  NOT-IN-GAME: '&c&lYou are not in game.'
+  FIGHT-STATUS: '&3&lYou are in &cFighting &3status.'
+TITLES:
+  LEVEL-UP: '&b&lLEVEL UP!'
+  LEVEL-UP-SUBTITLE: '&7[&e{old}&7] &3&l-> &7[&e{new}&7]'
+  DEATH-TITLE: '&c&lYOU DIED'
+  DEATH-SUBTITLE: '&e'
+SCOREBOARD:
+  WEBSITE: '&eMC.SERVER.ORG'

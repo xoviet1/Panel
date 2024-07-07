@@ -1,3 +1,0 @@
-# Panel
-wdwạkd
-ss

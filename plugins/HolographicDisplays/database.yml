@@ -1,0 +1,20 @@
+ffa:
+  location: world, 210.500, 109.000, -182.500
+  lines:
+  - '&7Playing &e{world: kffa}'
+pit:
+  location: world, 209.500, 109.000, -187.500
+  lines:
+  - '&7Playing &e{world: pit}'
+bridge:
+  location: world, 207.500, 109.000, -192.500
+  lines:
+  - '&7Playing &e{world: bridge-maps}'
+br:
+  location: world, 209.500, 109.000, -177.500
+  lines:
+  - '&7Playing &e{world: pubg}'
+tnttag:
+  location: world, 206.500, 109.000, -172.500
+  lines:
+  - '&7Playing &e{world: tnttag}'

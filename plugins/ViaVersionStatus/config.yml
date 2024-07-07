@@ -1,0 +1,34 @@
+# Strings should be enclosed in double quotes: "..."
+# Supported variables are %player%, %displayname%, %version%, and %server%
+# \n can be used as a line break
+
+# Notify ops when a player joins
+notify-ops: true
+notify-string: "&6Player &c%player% &6is using version &c%version%"
+notify-command: ""
+
+# Warn players when they are using an older version
+warn-players: true
+warn-string: "&cNOTICE: You are running Minecraft version &e%version%\n&cThe recommended version for this server is &a%server%"
+warn-command: ""
+
+# Warn players when they are using a newer version
+warn-players-newer: true
+warn-string-newer: "&cNOTICE: You are running Minecraft version &e%version%\n&cThe recommended version for this server is &a%server%"
+warn-command-newer: ""
+
+# Run at the highest priority (MONITOR)
+# Set to true if %displayname% doesn't work as expected
+high-priority: false
+
+# At startup, list the protocols supported by ViaVersion
+list-supported-protocols: true
+
+# Block "No light data found for chunk" warning messages
+block-no-light-data-warnings: false
+
+# Enable metrics (subject to bStats global config)
+enable-metrics: true
+
+# Record data via Prism, with the action vvs-client-connect
+prism-integration: false

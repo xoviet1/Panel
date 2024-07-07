@@ -1,0 +1,219 @@
+settings:
+    chat-format: '&3{player} &8» &7{message}'
+    chest:
+        enabled: true
+        min: 3
+        max: 6
+        normal-loot:
+        - bandage
+        custom-loot:
+        -   ==: org.bukkit.inventory.ItemStack
+            type: GOLD_RECORD
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eAK-47§e ▪ «30»
+                lore:
+                - §eFully automatic with high power.
+                - §eEffective at medium range.
+                - §eControls are inverted.
+        -   ==: org.bukkit.inventory.ItemStack
+            type: RECORD_3
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eGauss Shotgun§e ▪ «8»
+                lore:
+                - §eAdvanced pump-action shotgun.
+                - §eFires metal slugs that penetrate
+                - §eall targets within 40 blocks.
+        -   ==: org.bukkit.inventory.ItemStack
+            type: GREEN_RECORD
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eM4§e ▪ «30»
+                lore:
+                - §7Assault rifle
+                - '§7Damage: 4'
+                - §7Medium accuracy
+                - §7High damage
+                - §7Fast reload
+        -   ==: org.bukkit.inventory.ItemStack
+            type: IRON_BARDING
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §e9mm Pistol§e ▪ «6»
+                lore:
+                - §7Pistol
+                - '§7Damage: 2'
+                - §7Low damage
+                - §7Low accuracy
+                - §7Fast reload
+        -   ==: org.bukkit.inventory.ItemStack
+            type: DIAMOND_BARDING
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eRevolver§e ▪ «9»
+                lore:
+                - §7Pistol
+                - '§7Damage: 4'
+                - §7Medium damage
+                - §7Low accuracy
+                - §7Fast reload
+        -   ==: org.bukkit.inventory.ItemStack
+            type: RECORD_4
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eHunting Rifle§e ▫ «0»
+                lore:
+                - §eBolt-action rifle with high accuracy.
+                - §eEquipped with a night vision scope.
+                - §eDeals double damage on headshots.
+        -   ==: org.bukkit.inventory.ItemStack
+            type: LEATHER_HELMET
+        -   ==: org.bukkit.inventory.ItemStack
+            type: LEATHER_CHESTPLATE
+        -   ==: org.bukkit.inventory.ItemStack
+            type: LEATHER_LEGGINGS
+        -   ==: org.bukkit.inventory.ItemStack
+            type: LEATHER_BOOTS
+        -   ==: org.bukkit.inventory.ItemStack
+            type: CHAINMAIL_HELMET
+        -   ==: org.bukkit.inventory.ItemStack
+            type: CHAINMAIL_CHESTPLATE
+        -   ==: org.bukkit.inventory.ItemStack
+            type: CHAINMAIL_LEGGINGS
+        -   ==: org.bukkit.inventory.ItemStack
+            type: CHAINMAIL_BOOTS
+        -   ==: org.bukkit.inventory.ItemStack
+            type: GOLD_HELMET
+        -   ==: org.bukkit.inventory.ItemStack
+            type: GOLD_CHESTPLATE
+        -   ==: org.bukkit.inventory.ItemStack
+            type: GOLD_LEGGINGS
+        -   ==: org.bukkit.inventory.ItemStack
+            type: GOLD_BOOTS
+        -   ==: org.bukkit.inventory.ItemStack
+            type: BOW
+        -   ==: org.bukkit.inventory.ItemStack
+            type: ARROW
+            amount: 10
+        -   ==: org.bukkit.inventory.ItemStack
+            type: SEEDS
+            amount: 16
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eAmmo
+        -   ==: org.bukkit.inventory.ItemStack
+            type: SEEDS
+            amount: 8
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eAmmo
+        -   ==: org.bukkit.inventory.ItemStack
+            type: PUMPKIN_SEEDS
+            amount: 8
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eAmmo
+        -   ==: org.bukkit.inventory.ItemStack
+            type: PUMPKIN_SEEDS
+            amount: 16
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eAmmo
+        -   ==: org.bukkit.inventory.ItemStack
+            type: MELON_SEEDS
+            amount: 8
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eAmmo
+        -   ==: org.bukkit.inventory.ItemStack
+            type: MELON_SEEDS
+            amount: 16
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §eAmmo
+        -   ==: org.bukkit.inventory.ItemStack
+            type: WOOD_SWORD
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §7Pipe
+        -   ==: org.bukkit.inventory.ItemStack
+            type: STONE_SWORD
+            meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: §7Axe
+        -   ==: org.bukkit.inventory.ItemStack
+            type: COOKED_CHICKEN
+        -   ==: org.bukkit.inventory.ItemStack
+            type: COOKED_BEEF
+        -   ==: org.bukkit.inventory.ItemStack
+            type: GRILLED_PORK
+    death-chest:
+        enabled: true
+        extra-items:
+        - golden apple
+    items:
+        leave:
+            item: magma cream
+            name: '&cLeave the game'
+            slot: 8
+        bandage:
+            name: '&eBandage'
+    timers:
+        in-lobby: 30
+        in-game: 30
+    mix:
+        dragon-name: '&eEnder Dragon'
+    scoreboard:
+        name: '&eBATTLE ROYALE'
+        website: '&eplay.my-cool-server.net'
+    blocks:
+        allowed-to-place:
+        - normal wood plank
+        allowed-to-break:
+        - normal wood plank
+
+messages:
+    join: '&a{player} &ehas joined to the game.'
+    leave: '&a{player} &eleft the game.'
+    starting: '&eThe battle starts in &a{seconds} &eseconds'
+    stats:
+    - '&e&l✦&7&l&m--------------------------------------&e&l✦'
+    - ''
+    - '&8&l»          &6&lBattle Royale Stats        &8&l«'
+    - ''
+    - '&6&l» &7&lWINS &c{wins}'
+    - '&6&l» &7&lKILLS &c{kills}'
+    - '&6&l» &7&lDEATHS &c{deaths}'
+    - ''
+    - '&e&l✦&7&l&m--------------------------------------&e&l✦'
+    summary:
+    - ''
+    - ''
+    - ''
+    - '&e✦ &7Battle Royale &e✦'
+    - ''
+    - '&aWinner &7- &e{player}'
+    - '&aKills &7- &e{kills}'
+    - ''
+    - ''
+    - ''
+    kill:
+        msg: '&9➜ &a{victim} &7was killed by &a{attacker} &7using &a{tool}'
+        action-bar: '&7You killed &c{victim} &7with &e{tool} &7- {players-left} &7left
+            &c{kills} &cKILLS'
+    death: '&9➜ &a{victim} &7died'

@@ -1,0 +1,730 @@
+#0.4.0-B
+
+
+
+		
+
+on script load:	
+	set {_&} to "&"
+	if yaml value "CHAT.ENABLE" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "CHAT.ENABLE" from file "plugins/ThePIT/config.yml" to "true"
+	if yaml value "BUNGEECORD" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "BUNGEECORD" from file "plugins/ThePIT/config.yml" to "false"	
+	if yaml value "CHAT.CHAT-FORMAT" from file "plugins/ThePIT/config.yml" is not set:	
+		set yaml value "CHAT.CHAT-FORMAT" from file "plugins/ThePIT/config.yml" to "%{_&}%7[%{_&}%e{level}%{_&}%7] {player} %{_&}%8%{_&}%l- %{_&}%7{message}"
+	if yaml value "NAME-FORMAT" from file "plugins/ThePIT/config.yml" is not set:	
+		set yaml value "NAME-FORMAT" from file "plugins/ThePIT/config.yml" to "%{_&}%7[%{_&}%e{level}%{_&}%7] %{_&}%7"		
+	if yaml value "NPCS.SHOP-ID" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "NPCS.SHOP-ID" from file "plugins/ThePIT/config.yml" to 0	
+	if yaml value "NPCS.UPGRADE-ID" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "NPCS.UPGRADE-ID" from file "plugins/ThePIT/config.yml" to 1
+	if yaml value "NPCS.STATS-ID" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "NPCS.STATS-ID" from file "plugins/ThePIT/config.yml" to 2		
+	if yaml value "USE-PRESSURE-PLATE" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "USE-PRESSURE-PLATE" from file "plugins/ThePIT/config.yml" to "true"		
+	if yaml value "SOUNDS.LEVEL-UP-SOUND" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "SOUNDS.LEVEL-UP-SOUND" from file "plugins/ThePIT/config.yml" to "LEVEL_UP"	
+	if yaml value "SOUNDS.KILL-SOUND" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "SOUNDS.KILL-SOUND" from file "plugins/ThePIT/config.yml" to "ORB_PICKUP"	
+	if yaml list "ENABLED-WORLDS" from file "plugins/ThePIT/config.yml" is not set:
+		add "world" to yaml list "ENABLED-WORLDS" from file "plugins/ThePIT/config.yml"	
+		add "thepit" to yaml list "ENABLED-WORLDS" from file "plugins/ThePIT/config.yml"
+	if yaml value "REWARDS.KILL-XP" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "REWARDS.KILL-XP" from file "plugins/ThePIT/config.yml" to 15
+	if yaml value "REWARDS.KILL-GOLD" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "REWARDS.KILL-GOLD" from file "plugins/ThePIT/config.yml" to 10	
+	if yaml value "REWARDS.ASSIST-XP" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "REWARDS.ASSIST-XP" from file "plugins/ThePIT/config.yml" to 10	
+	if yaml value "REWARDS.ASSIST-GOLD" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "REWARDS.ASSIST-GOLD" from file "plugins/ThePIT/config.yml" to 5			
+	if yaml value "MAX-LEVEL" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MAX-LEVEL" from file "plugins/ThePIT/config.yml" to 120			
+	if yaml value "ENDER_CHEST-NEED-LEVEL" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "ENDER_CHEST-NEED-LEVEL" from file "plugins/ThePIT/config.yml" to 50		
+	if yaml value "STATS-NEED-LEVEL" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "STATS-NEED-LEVEL" from file "plugins/ThePIT/config.yml" to 50			
+	if yaml value "PERK-SLOT-2-NEED-LEVEL" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "PERK-SLOT-2-NEED-LEVEL" from file "plugins/ThePIT/config.yml" to 35			
+	if yaml value "MESSAGES.PREFIX" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.PREFIX" from file "plugins/ThePIT/config.yml" to "%{_&}%e%{_&}%lTHE PIT %{_&}%8%{_&}%l- %{_&}%7"	
+	if yaml value "MESSAGES.KILL" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.KILL" from file "plugins/ThePIT/config.yml" to "%{_&}%aKILL! %{_&}%7on [%{_&}%e{level}%{_&}%7] {victim} %{_&}%b%{_&}%l+{xp}XP %{_&}%6%{_&}%l+{gold}"		
+	if yaml value "MESSAGES.ASSIST" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.ASSIST" from file "plugins/ThePIT/config.yml" to "%{_&}%aASSIST! %{_&}%7on [%{_&}%e{level}%{_&}%7] {player} %{_&}%b%{_&}%l+{xp}XP %{_&}%6%{_&}%l+{gold}"	
+	if yaml value "MESSAGES.KILL-STREAK" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.KILL-STREAK" from file "plugins/ThePIT/config.yml" to "%{_&}%c%{_&}%lSTREAK! %{_&}%7of %{_&}%c[streak] %{_&}%7by {level} {player}"	
+	if yaml value "MESSAGES.LEVEL-UP" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.LEVEL-UP" from file "plugins/ThePIT/config.yml" to "%{_&}%3%{_&}%lLEVEL UP! %{_&}%7[%{_&}%e{level}%{_&}%7]"		
+	if yaml value "MESSAGES.ENDER_CHEST-NEED-LEVEL" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.ENDER_CHEST-NEED-LEVEL" from file "plugins/ThePIT/config.yml" to "%{_&}%cYou need level {level} to use stats!"	
+	if yaml value "MESSAGES.STATS-NEED-LEVEL" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.STATS-NEED-LEVEL" from file "plugins/ThePIT/config.yml" to "%{_&}%cYou need level {level} to use stats!"		
+	if yaml value "MESSAGES.ITEM-PURCHASE" from file "plugins/ThePIT/config.yml" is not set:
+		set yaml value "MESSAGES.ITEM-PURCHASE" from file "plugins/ThePIT/config.yml" to "%{_&}%aPURCHASE! %{_&}%6[item]"	
+	if yaml value "MESSAGES.PERK-PURCHASE" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "MESSAGES.PERK-PURCHASE" from file "plugins/ThePIT/config.yml" to "%{_&}%aPURCHASED PERK!"	
+	if yaml value "MESSAGES.PERK-SELECTED" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "MESSAGES.PERK-SELECTED" from file "plugins/ThePIT/config.yml" to "%{_&}%c%{_&}%lSELECTED PERK"			
+	if yaml value "MESSAGES.PERK-IN-USE" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "MESSAGES.PERK-IN-USE" from file "plugins/ThePIT/config.yml" to "%{_&}%c%{_&}%lYou already use this perk."					
+	if yaml value "MESSAGES.NO-GOLD" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "MESSAGES.NO-GOLD" from file "plugins/ThePIT/config.yml" to "%{_&}%c%{_&}%lNOT ENOUGHT GOLD!"		
+	if yaml value "MESSAGES.IN-GAME" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "MESSAGES.IN-GAME" from file "plugins/ThePIT/config.yml" to "%{_&}%cYou are already in game."	
+	if yaml value "MESSAGES.NOT-IN-GAME" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "MESSAGES.NOT-IN-GAME" from file "plugins/ThePIT/config.yml" to "%{_&}%c%{_&}%lYou are not in game."	
+	if yaml value "MESSAGES.FIGHT-STATUS" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "MESSAGES.FIGHT-STATUS" from file "plugins/ThePIT/config.yml" to "%{_&}%3%{_&}%lYou are in %{_&}%cFighting %{_&}%3status."		
+	if yaml value "TITLES.LEVEL-UP" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "TITLES.LEVEL-UP" from file "plugins/ThePIT/config.yml" to "%{_&}%b%{_&}%lLEVEL UP!"		
+	if yaml value "TITLES.LEVEL-UP-SUBTITLE" from file "plugins/ThePIT/config.yml" is not set:		
+		set yaml value "TITLES.LEVEL-UP-SUBTITLE" from file "plugins/ThePIT/config.yml" to "%{_&}%7[%{_&}%e{old}%{_&}%7] %{_&}%3%{_&}%l-> %{_&}%7[%{_&}%e{new}%{_&}%7]"	
+	if yaml value "TITLES.DEATH-TITLE" from file "plugins/ThePIT/config.yml" is not set:	
+		set yaml value "TITLES.DEATH-TITLE" from file "plugins/ThePIT/config.yml" to "%{_&}%c%{_&}%lYOU DIED"	
+	if yaml value "TITLES.DEATH-SUBTITLE" from file "plugins/ThePIT/config.yml" is not set:	
+		set yaml value "TITLES.DEATH-SUBTITLE" from file "plugins/ThePIT/config.yml" to "%{_&}%e"	
+	if yaml value "SCOREBOARD.WEBSITE" from file "plugins/ThePIT/config.yml" is not set:	
+		set yaml value "SCOREBOARD.WEBSITE" from file "plugins/ThePIT/config.yml" to "%{_&}%eMC.SERVER.ORG"
+	delete {THEPIT::*}
+	loop "CHAT.ENABLE", "CHAT.CHAT-FORMAT", "BUNGEECORD", "NPCS.SHOP-ID", "NPCS.UPGRADE-ID", "NPCS.STATS-ID", "USE-PRESSURE-PLATE", "SOUNDS.LEVEL-UP-SOUND", "SOUNDS.KILL-SOUND", "ENDER_CHEST-NEED-LEVEL", "STATS-NEED-LEVEL", "PERK-SLOT-2-NEED-LEVEL", "NAME-FORMAT", "REWARDS.KILL-XP", "REWARDS.KILL-GOLD", "REWARDS.ASSIST-XP", "REWARDS.ASSIST-GOLD", "MAX-LEVEL", "MESSAGES.PREFIX", "MESSAGES.KILL", "MESSAGES.ASSIST", "MESSAGES.KILL-STREAK", "MESSAGES.LEVEL-UP", "MESSAGES.ITEM-PURCHASE", "MESSAGES.PERK-PURCHASE", "MESSAGES.PERK-SELECTED", "MESSAGES.PERK-IN-USE", "MESSAGES.NO-GOLD", "MESSAGES.IN-GAME", "MESSAGES.NOT-IN-GAME", "MESSAGES.FIGHT-STATUS", "MESSAGES.ENDER_CHEST-NEED-LEVEL", "TITLES.LEVEL-UP", "TITLES.LEVEL-UP-SUBTITLE", "TITLES.DEATH-TITLE", "SCOREBOARD.WEBSITE", "MESSAGES.STATS-NEED-LEVEL" and "TITLES.DEATH-SUBTITLE": 
+		set {THEPIT::CONFIG::%loop-value%} to yaml value "%loop-value%" from file "plugins/ThePIT/config.yml"	
+	set {THEPIT::CONFIG::ENABLED-WORLDS::*} to yaml list "ENABLED-WORLDS" from file "plugins/ThePIT/config.yml"	
+	loop {THEPIT::CONFIG::*}:
+		replace all "&" with "§" in {THEPIT::CONFIG::%loop-index%}
+
+	
+	
+function pit_gold(p: player, do: text, gold: number) :: boolean:
+	set {_uuid} to uuid of {_p}
+	{_do} is "set":
+		set {pit.%{_uuid}%.gold} to 0
+	{_do} is "add":
+		add {_gold} to {pit.%{_uuid}%.gold}			
+	{_do} is "remove":
+		remove {_gold} from {pit.%{_uuid}%.gold}		
+	{_do} is "has":		
+		if {pit.%{_uuid}%.gold} >= {_gold}:
+			return true
+		else:
+			return false
+
+function pit_join(p: player):
+	set {_uuid} to uuid of {_p}
+	set {pit.%{_uuid}%.state} to "INGAME"
+	teleport {_p} to {pit.spawn}
+	loop "gold", "xp", "kills", "assists", "sword-hits", "arrow-hits" , "deaths" and "arrows-shot":
+		{pit.%{_uuid}%.%loop-value%} is not set
+		set {pit.%{_uuid}%.%loop-value%} to 0
+	if {pit.%{_uuid}%.level} is not set:
+		set {pit.%{_uuid}%.level} to 1	
+	if {pit.%{_uuid}%.xp-need} is not set:
+		set {pit.%{_uuid}%.xp-need} to 100		
+	set {pit.%{_uuid}%.streak} to 0
+	set {pit.%{_uuid}%.status} to "&aIdling"
+	pit_updatetag({_p})
+	pit_equip({_p})	
+	pit_scoreboard({_p})
+	
+function pit_leave(p: player):
+	set {_uuid} to uuid of {_p}	
+	if metadata value "ASSIST" of {_p} is set:
+		set {_player} to metadata value "ASSIST" of {_p}
+		set {_puuid} to uuid of {_player}
+		set {_msg} to {THEPIT::CONFIG::MESSAGES.ASSIST}
+		replace all "{player}" in {_msg} with "%{_player}%"	
+		replace all "{level}" in {_msg} with "%{pit.%{_puuid}%.level}%"
+		replace all "{gold}" in {_msg} with "%{THEPIT::CONFIG::REWARDS.ASSIST-GOLD}%"
+		replace all "{xp}" in {_msg} with "%{THEPIT::CONFIG::ASSIST-XP}%"					
+		add {THEPIT::CONFIG::REWARDS.ASSIST-GOLD} to {pit.%{_puuid}%.gold}
+		add {THEPIT::CONFIG::ASSIST-XP} to {pit.%{_puuid}%.xp}				
+		send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_msg}%" to {_player}		
+	delete stylish scoreboard "PIT-%{_p}%"
+	delete {pit.%{_uuid}%.streak}
+	delete {pit.%{_uuid}%.state}
+	delete {pit.%{_uuid}%.damage::*}
+	lobby({_p})
+	make console execute command "nte player %{_p}% prefix %{_p}'s prefix%"	
+	
+	
+function pit_clear(p: player):	
+	clear {_p}'s inventory
+	clear {_p}'s level
+	extinguish {_p}
+	milk({_p})
+
+command pit [<text>] [<player>] [<number>]:
+	trigger:
+		arg-1 is "join":
+			player's world is "world"
+			if {pit.%uuid of player%.state} is not set:
+				if {pit.spawn} is set:
+					pit_join(player)
+				else:
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &cSpawn is not set."
+			else:
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.IN-GAME}%"
+		arg-1 is "leave":
+			if {THEPIT::CONFIG::BUNGEECORD} is "false":
+				if {pit.%uuid of player%.state} is "INGAME":
+					pit_leave(player)
+				else:
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NOT-IN-GAME}%"
+		arg-1 is "setgold":	
+			if player has permission "PIT.SETGOLD":		
+				if arg-2 is set:
+					if arg-3 is set:
+						set {pit.%uuid of arg-2%.gold} to arg-3
+						send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Setted &b%arg-2%&b's &6&lGold to &c%arg-3%"	
+					else:
+						send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Specify a number"		
+				else:
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Specify a player"
+		arg-1 is "addgold":	
+			if player has permission "PIT.ADDGOLD":		
+				if arg-2 is set:
+					if arg-3 is set:
+						add arg-3 to {pit.%uuid of arg-2%.gold}
+						send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7You added &6&l%arg-3% Gold &7to &c%arg-2%&b's &6&lGold"	
+					else:
+						send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Specify a number"		
+				else:
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Specify a player"				
+		arg-1 is "setlevel":	
+			if player has permission "PIT.SETLEVEL":		
+				if arg-2 is set:
+					if arg-3 is set:
+						if {pit.%uuid of arg-2%.level} is set:
+							if arg-3 <= {THEPIT::CONFIG::MAX-LEVEL}:					
+								set {pit.%uuid of arg-2%.level} to arg-3
+								set {pit.%uuid of arg-2%.xp} to 0
+								set {pit.%uuid of arg-2%.xp-need} to 100*{pit.%uuid of arg-2%.level}
+								pit_updatetag(arg-2)
+								send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Setted &b%arg-2%&b's &bLevel to &c%arg-3%"	
+							else:
+								send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &eThe level has to be equal or bellow max level. &8(&a%{THEPIT::CONFIG::MAX-LEVEL}%&8)"
+						else:
+							send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &c%arg-2% &anever played"
+					else:
+						send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Specify a number"		
+				else:
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &7Specify a player"				
+		arg-1 is "spawn":
+			if {pit.%uuid of player%.state} is "INGAME":
+				if {pit.%uuid of player%.status} is "&aIdling":
+					remove all golden_apple from player
+					remove all heads from player
+					teleport player to {pit.spawn}
+				else:
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.FIGHT-STATUS}%"
+			else:
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NOT-IN-GAME}%"
+		arg-1 is "setspawn":
+			if player has permission "PIT.ADMIN":
+				set {pit.spawn} to player's location
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &cSpawn Set"
+		arg-1 is "editmode":
+			if player has permission "PIT.EDITMODE":			
+				if {THEPIT::CONFIG::BUNGEECORD} is "true":
+					delete {pit.%uuid of player%.state}
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &cYou are now able to build."
+			else:
+				stop					
+		arg-1 is "setleave":
+			if player has permission "PIT.ADMIN":
+				set {pit.leave} to location of player
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &cLeave location set"			
+		arg-1 is "reload":
+			if player has permission "PIT.ADMIN":
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &aReloading..."
+				make console execute command "sk reload %script%"
+			else:
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &aYou have to look at npc when you execute this command"
+		arg-1 is "help":				
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7Join"
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7Spawn"			
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7Leave"		
+			if player has permission "PIT.ADMIN":
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7SetGold <PLAYER> <NUMBER>"
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7SetLevel <PLAYER> <NUMBER>"	
+				if {THEPIT::CONFIG::BUNGEECORD} is "true":
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7EditMode"	
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7SetSpawn"			
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7SetLeave"				
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &8&l» &7Reload"				
+		arg-1 is not "join" or "leave" or "setgold" or "addgold" or "setlevel" or "spawn" or "setspawn" or "editmode" or "reload" or "help":
+			make player execute command "pit help"
+		arg-1 is not set:
+			make player execute command "pit help"
+				
+				
+function pit_scoreboard(p: player):
+	set {_uuid} to uuid of {_p}
+	if stylish scoreboard "PIT-%{_p}%" does not exist:
+		create new stylish scoreboard named "PIT-%{_p}%"	
+		loop 11 times:
+			create a new id based score "PIT-%{_p}%Slot%loop-number%" with text "&%loop-number%" slot loop-number for stylish scoreboard "PIT-%{_p}%"	
+	while {pit.%{_uuid}%.state} is "INGAME":
+		if {pit.%{_uuid}%.level} >= {THEPIT::CONFIG::MAX-LEVEL}:
+			set {_need} to "MAX LEVEL"
+		if {pit.%{_uuid}%.level} < {THEPIT::CONFIG::MAX-LEVEL}:
+			set {_need} to {pit.%{_uuid}%.xp-need}-{pit.%{_uuid}%.xp}
+		set stylish scoreboard of {_p} to "PIT-%{_p}%"				
+		set title of stylish scoreboard "PIT-%{_p}%" to "&e&lTHE PIT" 
+		set the text of id "PIT-%{_p}%Slot11" to "&7%now%" 
+		set the text of id "PIT-%{_p}%Slot10" to "&1&e" 
+		set the text of id "PIT-%{_p}%Slot9" to "&7Level &7[&e%{pit.%{_uuid}%.level}%&7]" 
+		set the text of id "PIT-%{_p}%Slot8" to "&7Needed XP: &b%{_need}%"
+		set the text of id "PIT-%{_p}%Slot7" to "&2&9"
+		set the text of id "PIT-%{_p}%Slot6" to "&7Gold: &6&l%{pit.%{_uuid}%.gold}%" 
+		set the text of id "PIT-%{_p}%Slot5" to "&3&9"
+		set the text of id "PIT-%{_p}%Slot4" to "&7Status: %{pit.%{_uuid}%.status}%" 
+		set the text of id "PIT-%{_p}%Slot3" to "&7Streaks: &a%{pit.%{_uuid}%.streak}%" 
+		set the text of id "PIT-%{_p}%Slot2" to "&4&9"
+		set the text of id "PIT-%{_p}%Slot1" to "%{THEPIT::CONFIG::SCOREBOARD.WEBSITE}%" 
+		wait a second
+
+	
+function pit_open_stats(p: player):
+	set {_uuid} to uuid of {_p}
+	open virtual chest inventory with size 3 named "My pit stats" to {_p}
+	make a gui slot 12 of {_p} with iron_sword named "&cOffensive Stats" with lore "||&7Kills: &a%{pit.%{_uuid}%.kills}%||&7Assists &a%{pit.%{_uuid}%.assists}%||&7Sword hits &a%{pit.%{_uuid}%.sword-hits}%||&7Arrow hits &a%{pit.%{_uuid}%.arrow-hits}%||&7Arrows shoot &a%{pit.%{_uuid}%.arrows-shot}%" to do nothing			
+	make a gui slot 14 of {_p} with iron_chestplate named "&1Defensive Stats" with lore "||&7Deaths: &a%{pit.%{_uuid}%.deaths}%||" to do nothing	
+		
+on damage of player:
+	{pit.%uuid of victim%.state} is "INGAME"
+	if damage cause is fall:
+		cancel event
+		stop
+	if damage cause is void:
+		cancel event
+		pit_player_death(victim)
+	if damage is greater than or equal to health of victim:
+		cancel event	
+		if attacker is online:
+			pit_player_death(victim, "%attacker%")	
+		else:
+			pit_player_death(victim)	
+	if "%damage cause%" is "projectile":
+		if {pit.%uuid of attacker%.perk::slot-1} or {pit.%uuid of attacker%.perk::slot-2} is "ENDLESS-QUIVER":	
+			give 3 arrows to attacker
+			add 1 to {pit.%uuid of attacker%.arrow-hits}	
+	if attacker is player:
+		if attacker is not victim:
+			if attacker's item is any sword:
+				add 1 to {pit.%uuid of attacker%.sword-hits}
+			wait a seconds
+			loop 20 times:
+				set {_health.%loop-integer%.%victim%} to "&7❤"
+				loop-integer is greater than max health of victim
+				set {_health.%loop-integer%.%victim%} to ""
+			loop rounded health of victim times:
+				set {_health.%loop-integer%.%victim%} to "&4❤"
+			show action bar from coloured "%{_health.1.%victim%}%%{_health.2.%victim%}%%{_health.3.%victim%}%%{_health.4.%victim%}%%{_health.5.%victim%}%%{_health.6.%victim%}%%{_health.7.%victim%}%%{_health.8.%victim%}%%{_health.9.%victim%}%%{_health.10.%victim%}%%{_health.11.%victim%}%%{_health.12.%victim%}%%{_health.13.%victim%}%%{_health.14.%victim%}%%{_health.15.%victim%}%%{_health.16.%victim%}%%{_health.17.%victim%}%%{_health.18.%victim%}%%{_health.19.%victim%}%%{_health.20.%victim%}%" to attacker
+			
+			set {_sec.%uuid of victim%} to 10
+			set {_sec.%uuid of attacker%} to 10
+			if {pit.%uuid of victim%.status} is "&aIdling":
+				set {pit.%uuid of victim%.status} to "&cFighting"
+				while {pit.%uuid of victim%.status} is "&cFighting":
+					remove 1 from {_sec.%uuid of victim%}
+					wait a second
+					if {_sec.%uuid of victim%} is 0:
+						set {pit.%uuid of victim%.status} to "&aIdling"
+						
+			if {pit.%uuid of attacker%.status} is "&aIdling":
+				set {pit.%uuid of attacker%.status} to "&cFighting"
+				while {pit.%uuid of attacker%.status} is "&cFighting":
+					remove 1 from {_sec.%uuid of attacker%}
+					wait a second
+					if {_sec.%uuid of attacker%} is 0:
+						set {pit.%uuid of attacker%.status} to "&aIdling"
+			
+			set {_dmg} to damage
+			add rounded {_dmg} to {pit.%uuid of victim%.damage::%uuid of attacker%} 
+			if {pit.%uuid of victim%.damage::%uuid of attacker%}  > 10:
+				set metadata value "ASSIST" of victim to attacker
+				delete {pit.%uuid of victim%.damage::%uuid of attacker%} 
+				
+				while {_sec.assist.%uuid of victim%} > 1:
+					remove 1 from {_sec.assist.%uuid of victim%}
+					wait a second
+					{_sec.assist.%uuid of victim%} = 1:
+						delete metadata value "ASSIST" of victim
+
+		
+function pit_give_gp(p: player):
+	set {_uuid} to uuid of {_p}
+	if {pit.%{_uuid}%.perk::slot-1} or {pit.%{_uuid}%.perk::slot-2} = "GOLDEN-HEADS":
+		if number of head in {_p}'s inventory = 0 or 1:
+			give skull of "StackedGold" parsed as offline player named "&6&lGolden Head" to {_p}
+	else:
+		if number of golden_apple in {_p}'s inventory = 0 or 1:
+			give 1 golden_apple to {_p}	
+			
+function pit_player_death(victim: player, attacker: text = "null"):	
+	if {_attacker} is not "null":
+		set {_attacker} to {_attacker} parsed as player
+		set {_attacker-uuid} to uuid of {_attacker}
+		set {_victim-uuid} to uuid of {_victim}	
+		add 1 to {pit.%{_attacker-uuid}%.streak}
+		add 1 to {pit.%{_attacker-uuid}%.kills}		
+		add {THEPIT::CONFIG::REWARDS.KILL-XP} to {pit.%{_attacker-uuid}%.xp}
+		if {pit.%{_attacker-uuid}%.streak} = 5 or 10 or 15 or 25 or 30 or 35 or 40 or 45 or 50:
+			set {_x} to {THEPIT::CONFIG::MESSAGES.KILL-STREAK}
+			replace all "[streak]" in {_x} with "%{pit.%{_attacker-uuid}%.streak}%"			
+			replace all "{level}" in {_x} with "%{pit.%{_attacker-uuid}%.level}%"
+			replace all "{player}" in {_x} with {_attacker}'s displayname			
+			loop all players:
+				if {pit.%uuid of loop-player%.state} is "INGAME":
+					send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_x}%" to loop-player 	
+		set {_x} to {THEPIT::CONFIG::MESSAGES.KILL}
+		replace all "{level}" in {_x} with "%{pit.%{_victim-uuid}%.level}%"
+		replace all "{victim}" in {_x} with {_victim}'s displayname
+		replace all "{gold}" in {_x} with "%{THEPIT::CONFIG::REWARDS.ASSIST-XP}%"
+		replace all "{xp}" in {_x} with "%{THEPIT::CONFIG::REWARDS.KILL-XP}%"		
+		send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_x}%" to {_attacker}	
+		pit_gold({_attacker}, "add", {THEPIT::CONFIG::REWARDS.ASSIST-XP})	
+		pit_play_sound({_attacker}, {THEPIT::CONFIG::SOUNDS.KILL-SOUND})
+		pit_give_gp({_attacker})
+		if {pit.%{_attacker-uuid}%.level} < {THEPIT::CONFIG::MAX-LEVEL}:
+			pit_check_level({_attacker})
+		show action bar from coloured "&7&l%{_victim}% &a&lKILL" to {_attacker}
+	if metadata value "ASSIST" of {_victim} is set:
+		set {_G} to metadata value "ASSIST" of {_victim}
+		if {_G} is not {_attacker}:
+			set {_k} to {THEPIT::CONFIG::MESSAGES.ASSIST}
+			set {_uuid} to uuid of {_G}
+			replace all "{player}" in {_k} with "%{_victim}%"	
+			replace all "{level}" in {_k} with "%{pit.%{_uuid}%.level}%"
+			replace all "{gold}" in {_k} with "%{THEPIT::CONFIG::REWARDS.ASSIST-GOLD}%"
+			replace all "{xp}" in {_k} with "%{THEPIT::CONFIG::ASSIST-XP}%"					
+			pit_gold({_G}, "add", {THEPIT::CONFIG::REWARDS.ASSIST-GOLD})
+			add 1 to {pit.%{_uuid}%.assists}		
+			add {THEPIT::CONFIG::ASSIST-XP} to {pit.%{_uuid}%.xp}		
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_k}%" to {_G}					
+	send title "%{THEPIT::CONFIG::TITLES.DEATH-TITLE}%" with subtitle "%{THEPIT::CONFIG::TITLES.DEATH-SUBTITLE}%" to {_victim} for 40 ticks	
+	set {pit.%{_victim-uuid}%.status} to "&aIdling"	
+	teleport {_victim} to {pit.spawn}	
+	set {pit.%{_victim-uuid}%.streak} to 0	
+	pit_updatetag({_victim})
+	pit_equip({_victim})	
+	
+command:
+	{pit.%uuid of player%.state} is "INGAME"
+	full command is "spawn"
+	cancel event
+	make player execute command "pit spawn"
+	
+quit:
+	pit_leave(player)
+		
+pressure plate:
+	{pit.%uuid of player%.state} is "INGAME"
+	{THEPIT::CONFIG::USE-PRESSURE-PLATE} is "true"
+	cancel event	
+	push the player upwards at speed 0.4
+	push the player forwards at speed 1.2
+	
+right click with head:
+	{pit.%uuid of player%.state} is "INGAME"
+	name of event-item is "&6&lGolden Head"
+	{pit.%uuid of player%.perk::slot-1} or {pit.%uuid of player%.perk::slot-2} = "GOLDEN-HEADS"
+	cancel event
+	remove regeneration from player
+	remove absorption from player
+	apply regeneration 2 to the player for 5 seconds
+	apply absorption 1 to the player for 120 seconds
+	remove event-item from player
+
+shoot:
+	{pit.%uuid of shooter%.state} is "INGAME"
+	projectile is arrow
+	add 1 to {pit.%uuid of shooter%.arrows-shot}
+	
+right click on ender_chest:
+	{pit.%uuid of player%.state} is "INGAME"
+	{pit.%uuid of player%.level} < {THEPIT::CONFIG::ENDER_CHEST-NEED-LEVEL}
+	cancel event
+	set {_msg} to {THEPIT::CONFIG::MESSAGES.ENDER_CHEST-NEED-LEVEL}
+	replace all "{level}" in {_msg} with "%{THEPIT::CONFIG::ENDER_CHEST-NEED-LEVEL}%"
+	send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_msg}%"
+
+
+place:
+	{pit.%uuid of player%.state} is "INGAME"
+	if event-block is obsidian:
+		add location of event-block to {PIT::CLEANUP::*}
+		wait 120 seconds
+		set event-block to air
+		remove location of event-block from {PIT::CLEANUP::*}
+	if event-block is lava:
+		loop all blocks in radius 1.5 of event-block:
+			loop-block is water
+			cancel event
+			stop
+		add location of event-block to {PIT::CLEANUP::*}	
+		wait 2 seconds
+		set event-block to air
+		remove location of event-block from {PIT::CLEANUP::*}		
+	else:
+		cancel event
+
+load:
+	broadcast "%{THEPIT::CONFIG::MESSAGES.PREFIX}% &aLoaded."
+	loop {PIT::CLEANUP::*}:
+		set block at loop-value to air
+		wait a tick
+		
+block flow:
+	if event-block is lava:
+		loop {THEPIT::CONFIG::ENABLED-WORLDS::*}:
+			if event-world is loop-value:
+				cancel event
+break:
+	{pit.%uuid of player%.state} is "INGAME"
+	cancel event
+
+drop:
+	{pit.%uuid of player%.state} is "INGAME"
+	cancel event
+	
+hunger bar change:
+	{pit.%uuid of player%.state} is "INGAME"
+	cancel event		
+	set player's hunger to 20
+		
+right click on entity:
+	{pit.%uuid of player%.state} is "INGAME"
+	if name of clicked entity is "&6Items":
+		pit_items_shop(player)
+	if name of clicked entity is "&aUpgrades":
+		pit_upgrades_shop(player)
+	if name of clicked entity is "&eStats":
+		if {pit.%uuid of player%.level} < {THEPIT::CONFIG::STATS-NEED-LEVEL}:
+			set {_msg} to {THEPIT::CONFIG::MESSAGES.STATS-NEED-LEVEL}
+			replace all "{level}" in {_msg} with "%{THEPIT::CONFIG::STATS-NEED-LEVEL}%"
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_msg}%" to player
+			stop
+		pit_open_stats(player)		
+
+
+function pit_play_sound(p: player, sound: text):	
+	play sound "%{_sound}%" to {_p} with volume 100 and pitch 100
+	
+function pit_check_level(p: player):	
+	set {_uuid} to uuid of {_p}
+	if {pit.%{_uuid}%.xp} >= {pit.%{_uuid}%.xp-need}:
+		remove {pit.%{_uuid}%.xp-need} from {pit.%{_uuid}%.xp}
+		set {_old} to {pit.%{_uuid}%.level}
+		add 1 to {pit.%{_uuid}%.level}
+		pit_updatetag({_p})
+		set {_msg} to {THEPIT::CONFIG::MESSAGES.LEVEL-UP}
+		replace all "{level}" with "%{pit.%{_uuid}%.level}%" in {_msg}
+		send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_msg}%" to {_p}
+		set {_title} to {THEPIT::CONFIG::TITLES.LEVEL-UP}
+		set {_subtitle} to {THEPIT::CONFIG::TITLES.LEVEL-UP-SUBTITLE}
+		replace all "{old}" with "%{_old}%" in {_title}
+		replace all "{old}" with "%{_old}%" in {_subtitle}		
+		replace all "{new}" with "%{pit.%{_uuid}%.level}%" in {_title}
+		replace all "{new}" with "%{pit.%{_uuid}%.level}%" in {_subtitle}		
+		send title "%{_title}%" with subtitle "%{_subtitle}%" to {_p} for 40 ticks
+		pit_play_sound({_p}, {THEPIT::CONFIG::SOUNDS.LEVEL-UP-SOUND})
+		set {_p}'s level to {pit.%{_uuid}%.level}
+		if {pit.%{_uuid}%.level} > 1:
+			set {pit.%{_uuid}%.xp-need} to 100*{pit.%{_uuid}%.level}
+		else:
+			add 100 to {pit.%{_uuid}%.xp-need}
+	
+function pit_check_in_use(p: player, slot: integer, perk: text) :: boolean:	
+	set {_uuid} to uuid of {_p}
+	{_slot} is 1:
+		set {_x} to 2
+	{_slot} is 2:	
+		set {_x} to 1	
+	if {pit.%{_uuid}%.perk::slot-%{_x}%} is "%{_perk}%":
+		send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.PERK-IN-USE}%" to {_p}
+		return true
+	else:
+		return false
+		
+function pit_perk_shop(p: player, slot: integer):	
+	set {_uuid} to uuid of {_p}
+	open virtual chest inventory with size 3 named "Chose a Perk" to {_p}
+	make a gui slot 10 of {_p} with gold block named "&cGolden Heads" with lore "||&7Golden apples you earn turn into &6Golden Heads||||&8&l- &7COST: &6&l500||" to run:	
+		if {pit.%{_uuid}%.perk::golden-heads} is not set:
+			if pit_gold({_p}, "has", 500) is true:
+				set {pit.%{_uuid}%.perk::golden-heads} to true
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "GOLDEN-HEADS"
+				pit_gold({_p}, "remove", 500)
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.PERK-SELECTED}%"
+				pit_upgrades_shop({_p})
+			else:
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"	
+		else:
+			pit_check_in_use({_p}, {_slot}, "GOLDEN-HEADS") is false:
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "GOLDEN-HEADS"
+				pit_upgrades_shop({_p})
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::SELECTED-PERK}%"
+	make a gui slot 12 of {_p} with fishing rod named "&cFishing rod" with lore "||&7Spawn with a fishing rod||||&8&l- &7COST: &6&l1000||" to run:	
+		if {pit.%{_uuid}%.perk::fishing-rod} is not set:
+			if pit_gold({_p}, "has", 1000) is true:
+				set {pit.%{_uuid}%.perk::fishing-rod} to true
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "FISHING-ROD"
+				pit_gold({_p}, "remove", 1000)
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.PERK-SELECTED}%"
+				pit_upgrades_shop({_p})
+			else:
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"	
+		else:
+			pit_check_in_use({_p}, {_slot}, "FISHING-ROD") is false:
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "FISHING-ROD"
+				pit_upgrades_shop({_p})
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::SELECTED-PERK}%"
+	make a gui slot 14 of {_p} with lava bucket named "&cLava Bucket" with lore "||&7Spawn with a lava bucket||||&8&l- &7COST: &6&l1000||" to run:	
+		if {pit.%{_uuid}%.perk::lava-bucket} is not set:
+			if pit_gold({_p}, "has", 1000) is true:
+				set {pit.%{_uuid}%.perk::lava-bucket} to true
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "LAVA-BUCKET"
+				pit_gold({_p}, "remove", 1000)
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.PERK-SELECTED}%"
+				pit_upgrades_shop({_p})
+			else:
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"	
+		else:
+			pit_check_in_use({_p}, {_slot}, "LAVA-BUCKET") is false:
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "LAVA-BUCKET"
+				pit_upgrades_shop({_p})
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::SELECTED-PERK}%"
+	make a gui slot 16 of {_p} with bow named "&cEndless Quiver" with lore "||&7Get 3 arrows on arrow hit||||&8&l- &7COST: &6&l2000||" to run:	
+		if {pit.%{_uuid}%.perk::endless-quiver} is not set:
+			if pit_gold({_p}, "has", 1000) is true:	
+				set {pit.%{_uuid}%.perk::endless-quiver} to true
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "ENDLESS-QUIVER"
+				pit_gold({_p}, "remove", 2000)
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.PERK-SELECTED}%"
+				pit_upgrades_shop({_p})
+			else:
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"	
+		else:
+			pit_check_in_use({_p}, {_slot}, "ENDLESS-QUIVER") is false:
+				set {pit.%{_uuid}%.perk::slot-%{_slot}%} to "ENDLESS-QUIVER"
+				pit_upgrades_shop({_p})
+				send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::SELECTED-PERK}%"		
+
+
+function pit_upgrades_shop(p: player):
+	set {_uuid} to uuid of {_p}
+	open virtual chest inventory with size 5 named "Permanent upgrades" to {_p}
+	wait a tick	
+	if {pit.%{_uuid}%.perk::slot-1} is not set:
+		make a gui slot 12 of {_p} with diamond block named "&aPERK SLOT ##1" with lore "||&7Select a perk to fill this slot||||&eClick to chose perk!||" to run function pit_perk_shop({_p}, 1)
+	if {pit.%{_uuid}%.perk::slot-1} is set:	
+		if {pit.%{_uuid}%.perk::slot-1} = "GOLDEN-HEADS":
+			make a gui slot 12 of {_p} with gold block named "&ePERK SLOT &3##1 &7- &6&lGOLDEN HEADS" to run function pit_perk_shop({_p}, 1)
+		if {pit.%{_uuid}%.perk::slot-1} = "FISHING-ROD":		
+			make a gui slot 12 of {_p} with fishing rod named "&ePERK SLOT &3##1 &7- &9&lFISHING ROD" to run function pit_perk_shop({_p}, 1)
+		if {pit.%{_uuid}%.perk::slot-1} = "LAVA-BUCKET":		
+			make a gui slot 12 of {_p} with lava bucket named "&ePERK SLOT &3##1 &7- &9&lLAVA BUCKET" to run function pit_perk_shop({_p}, 1)	
+		if {pit.%{_uuid}%.perk::slot-1} = "ENDLESS-QUIVER":		
+			make a gui slot 12 of {_p} with bow named "&ePERK SLOT &3##2 &7- &9&lENDLESS QUIVER" to run function pit_perk_shop({_p}, 1)			
+	if {pit.%{_uuid}%.level} >= {THEPIT::CONFIG::PERK-SLOT-2-NEED-LEVEL}:
+		if {pit.%{_uuid}%.perk::slot-2} is not set:
+			make a gui slot 14 of {_p} with diamond block named "&aPERK SLOT ##2" with lore "||&7Select a perk to fill this slot||||&eClick to chose perk!||" to run function pit_perk_shop({_p}, 2)	
+							
+		if {pit.%{_uuid}%.perk::slot-2} is set:			
+			if {pit.%{_uuid}%.perk::slot-2} = "GOLDEN-HEADS":
+				make a gui slot 14 of {_p} with gold block named "&ePERK SLOT &3##2 &7- &6&lGOLDEN HEADS" to run function pit_perk_shop({_p}, 2)
+			if {pit.%{_uuid}%.perk::slot-2} = "FISHING-ROD":		
+				make a gui slot 14 of {_p} with fishing rod named "&ePERK SLOT &3##2 &7- &9&lFISHING ROD" to run function pit_perk_shop({_p}, 2)
+			if {pit.%{_uuid}%.perk::slot-2} = "LAVA-BUCKET":		
+				make a gui slot 14 of {_p} with lava bucket named "&ePERK SLOT &3##2 &7- &9&lLAVA BUCKET" to run function pit_perk_shop({_p}, 2)		
+			if {pit.%{_uuid}%.perk::slot-2} = "ENDLESS-QUIVER":		
+				make a gui slot 14 of {_p} with bow named "&ePERK SLOT &3##2 &7- &9&lENDLESS QUIVER" to run function pit_perk_shop({_p}, 2)	
+	else:
+		make a gui slot 14 of {_p} with bedrock named "&cPERK SLOT ##2" with lore "&7Required level: &7[&a%{THEPIT::CONFIG::PERK-SLOT-2-NEED-LEVEL}%&7]" to do nothing
+		
+				
+	
+function pit_items_shop(p: player):	
+	open virtual chest inventory with size 3 named "Non-permanent items" to {_p}
+	wait a tick
+	set {_uuid} to uuid of {_p}
+	make a gui slot 10 of {_p} with diamond_sword named "&e&lDIAMOND SWORD" with lore "||&8&l- &7LOST ON DEATH||||&8&l- &7COST: &6&l100" to run:
+		set {_uuid} to uuid of {_p}
+		if pit_gold({_p}, "has", 100) is true:	
+			pit_gold({_p}, "remove", 100)
+			give 1 diamond_sword to {_p}
+			set {_item} to "DIAMOND SWORD"
+			set {_x} to {THEPIT::CONFIG::MESSAGES.ITEM-PURCHASE}
+			replace all "[item]" with "%{_item}%" in {_x}
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_x}%"
+		else:
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"
+	make a gui slot 11 of {_p} with 8 obsidian named "&e&lOBSIDIAN" with lore "||&8&l- &7REMAINS FOR 120 SECONDS||||&8&l- &7LOST ON DEATH||||&8&l- &7COST: &6&l40" to run:
+		if pit_gold({_p}, "has", 40) is true:	
+			pit_gold({_p}, "remove", 40)
+			give 8 obsidian to {_p}
+			set {_item} to "OBSIDIAN"
+			set {_x} to {THEPIT::CONFIG::MESSAGES.ITEM-PURCHASE}
+			replace all "[item]" with "%{_item}%" in {_x}			
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_x}%"
+		else:
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"		
+	make a gui slot 12 of {_p} with 32 arrow named "&e&lARROW" with lore "||&8&l- &7LOST ON DEATH||||&8&l- &7COST: &6&l16" to run:
+		if {pit.%{_uuid}%.gold} >= 16:	
+			remove 16 from {pit.%{_uuid}%.gold}
+			give 32 arrow to {_p}
+			set {_item} to "ARROW"
+			set {_x} to {THEPIT::CONFIG::MESSAGES.ITEM-PURCHASE}
+			replace all "[item]" with "%{_item}%" in {_x}			
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_x}%"
+		else:
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"				
+	make a gui slot 15 of {_p} with diamond_chestplate named "&e&lDIAMOND CHESTPLATE" with lore "||&8&l- &7AUTO EQUIP ON BUY||||&8&l- &7LOST ON DEATH||||&8&l- &7COST: &6&l250" to run:
+		if pit_gold({_p}, "has", 250) is true:	
+			pit_gold({_p}, "remove", 250)
+			set {_p}'s chestplate to diamond_chestplate
+			set {_item} to "DIAMOND CHESTPLATE"
+			set {_x} to {THEPIT::CONFIG::MESSAGES.ITEM-PURCHASE}
+			replace all "[item]" with "%{_item}%" in {_x}			
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_x}%"
+		else:
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"		
+	make a gui slot 16 of {_p} with diamond_boots named "&e&lDIAMOND BOOTS" with lore "||&8&l- &7AUTO EQUIP ON BUY||||&8&l- &7LOST ON DEATH||||&8&l- &7COST: &6&l150" to run:
+		if pit_gold({_p}, "has", 150) is true:	
+			pit_gold({_p}, "remove", 150)
+			set {_p}'s boots to diamond_boots
+			set {_item} to "DIAMOND BOOTS"
+			set {_x} to {THEPIT::CONFIG::MESSAGES.ITEM-PURCHASE}
+			replace all "[item]" with "%{_item}%" in {_x}			
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{_x}%"
+		else:
+			send "%{THEPIT::CONFIG::MESSAGES.PREFIX}% %{THEPIT::CONFIG::MESSAGES.NO-GOLD}%"			
+	
+function pit_updatetag(p: player):
+	set {_uuid} to uuid of {_p}
+	set {_tag} to {THEPIT::CONFIG::NAME-FORMAT}
+	replace all "{level}" with "%{pit.%{_uuid}%.level}%" in {_tag}
+	replace all "{prefix}" with {_p}'s prefix in {_tag}		
+	make console execute command "nte player %{_p}% prefix %{_tag}%"
+	
+function pit_equip(p: player):	
+	set {_uuid} to uuid of {_p}
+	pit_clear({_p})	
+	set {_p}'s level to {pit.%{_uuid}%.level}
+	heal {_p}
+	delete metadata value "ASSIST" of {_p}	
+	set slot 0 of {_p} to unbreakable iron_sword
+	set slot 1 of {_p} to unbreakable bow
+	if {pit.%{_uuid}%.perk::slot-1} or {pit.%{_uuid}%.perk::slot-2} = "FISHING-ROD":
+		set slot 2 of {_p} to unbreakable fishing rod
+	if {pit.%{_uuid}%.perk::slot-2} or {pit.%{_uuid}%.perk::slot-1} = "LAVA-BUCKET":
+		set slot 3 of {_p} to lava bucket		
+	set slot 8 of {_p} to 30 arrows
+	wait 0.5 seconds
+	set {_p}'s helmet to unbreakable chain_helmet
+	set {_p}'s chestplate to unbreakable chain_chestplate
+	set {_p}'s leggings to unbreakable iron_leggings
+	set {_p}'s boots to unbreakable iron_boots	
+	
+	

@@ -1,0 +1,21 @@
+CHAT-FORMAT: '{team} &3{player} &8&l- &7{message}'
+AUTO-JOIN-ON-END: false
+COMMANDS:
+  KILL: eco give {player} 5
+  WIN: eco give {player} 20
+  GOAL: eco give {player} 10
+ITEMS:
+  LEAVE: bed_item
+  LEAVE-NAME: '&c&lLEAVE'
+MESSAGES:
+  PREFIX: '&6&lTHE BRIDGE &8&l- &7'
+  JOIN-MESSAGE: '&a{player} &ehas joined to the game.'
+  LEFT-MESSAGE: '&a{player} &ehas left the game.'
+  STARTING-IN: '&eStarting in &6{seconds} &eseconds'
+  IN-GAME: '&cYou are already in game.'
+  NOT-IN-GAME: '&c&lYou are not in game.'
+  KILL-MESSAGE: '&c{victim} &ewas killed by &c{killer}'
+STATUS:
+  INGAME: '&cINGAME'
+  STARTING: '&3STARTING...'
+  WAITING: '&aWAITING'
